@@ -1,32 +1,24 @@
-import { useState } from "react";
 import "./App.css";
-import UserName from "./components/UserName";
-import UserInfo from "./components/UserInfo";
+import ProductCard from "./components/ProductCard";
+import PropsDefault from "./components/PropsDefault";
 
 function App() {
-  // const [name, setName] = useState("Arti");
+  // function handleSubmit() {
+  //   alert("hello");
+  // }
 
-  // const handleName = () => {
-  //   setName("Singh");
-  // };
+  // const handleSubmit = () => alert("hello");
 
-  // const userData = [
-  //   { name: "Arti", qualification: "Btech" },
-  //   { name: "Singh", qualification: "Btech" },
-  //   { name: "Chaudhary", qualification: "Btech" },
-  // ];
+  const product = [
+    { name: "Laptop", isStock: true },
+    { name: "Pc", isStock: true },
+    { name: "Mobile", isStock: false },
+  ];
 
   return (
     <>
-      <UserInfo name="dfuo;ghu" />
-
-      {/* <UserName name={name} />
-      <button onClick={handleName}>Change Name</button> */}
-      {/* {userData.map((data, index) => (
-        <UserName name={data.name} qualification={data.qualification} />
-      ))} */}
-
-      {/* <ToDoApp /> */}
+      <ProductCard product={product} />
+      {/* <PropsDefault onClick={handleSubmit} /> */}
     </>
   );
 }
