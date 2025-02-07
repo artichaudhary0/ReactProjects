@@ -11,13 +11,14 @@ const ProductCard = ({ product, onBuy }) => {
           backgroundColor: product.isStock ? "grey" : "dark-grey",
         }}
       >
-        <ul>
-          {product.map((data, index) => (
-            <li>{data.name}</li>
-          ))}
-        </ul>
-
-        {/* <h3>{product[0]["name"]}</h3> */}
+        <h3>{product.name}</h3>
+        <p>Price : ${product.price}</p>
+        <p style={{ color: product.isStock ? "green" : "red" }}>
+          {product.isStock ? "In stock" : "Out of Stock"}
+        </p>
+        <button onClick={() => onBuy(product.name)} disabled={!product.isStock}>
+          Buy Now
+        </button>
       </div>
     </>
   );

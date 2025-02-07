@@ -1,24 +1,21 @@
 import "./App.css";
-import ProductCard from "./components/ProductCard";
-import PropsDefault from "./components/PropsDefault";
+
+import ProductList from "./components/ProductList";
 
 function App() {
-  // function handleSubmit() {
-  //   alert("hello");
-  // }
-
-  // const handleSubmit = () => alert("hello");
-
+  // list of products
   const product = [
-    { name: "Laptop", isStock: true },
-    { name: "Pc", isStock: true },
-    { name: "Mobile", isStock: false },
+    { name: "Laptop", price: 123214, isStock: true },
+    { name: "Pc", price: 134523214, isStock: true },
+    { name: "Mobile", price: 453123214, isStock: false },
+    { name: "Laptop", price: 123214, isStock: true },
+    { name: "Pc", price: 134523214, isStock: true },
+    { name: "Mobile", price: 453123214, isStock: false },
   ];
 
   return (
     <>
-      <ProductCard product={product} />
-      {/* <PropsDefault onClick={handleSubmit} /> */}
+      <ProductList products={product} />
     </>
   );
 }
