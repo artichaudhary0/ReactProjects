@@ -10,8 +10,6 @@ Props : properties (parent child)
 */
 
 function Products({ product, onAddToCart }) {
-  console.log(product);
-
   return (
     <div
       style={{
@@ -23,7 +21,7 @@ function Products({ product, onAddToCart }) {
       }}
     >
       <img
-        src={product[0].image}
+        src={product.image}
         alt={product.name}
         style={{
           width: "100%",
@@ -32,12 +30,12 @@ function Products({ product, onAddToCart }) {
           borderRadius: "8px",
         }}
       />
-      <h3 style={{ margin: "10px 0" }}>{product[0].name} </h3>
+      <h3 style={{ margin: "10px 0" }}>{product.name} </h3>
 
-      <p style={{ color: "#666" }}> ${product[0].price} </p>
+      <p style={{ color: "#666" }}> ${product.price} </p>
 
       <button
-        onClick={() => onAddToCart()}
+        onClick={() => onAddToCart(product)}
         style={{
           color: "white",
           padding: "8px 15px",
