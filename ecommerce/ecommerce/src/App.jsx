@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
+import NavBar from "./components/NavBar";
 
 function App() {
   const products = [
@@ -30,6 +31,11 @@ function App() {
 
   const [cartItem, setCartItem] = useState([]);
 
+  const cartItemCount = cartItem.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   const onAddToCart = (product) => {
     setCartItem((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
@@ -42,15 +48,27 @@ function App() {
             : item
         );
       }
-
       return [...prevItems, { ...product, quantity: 1 }];
     });
   };
 
+  // const onRemoveFromCart = (productId) => {
+  //   setCartItem((prevItems) =>
+  //     prevItems.filter((item) => item.id !== productId)
+  //   );
+  // };
+
   const onRemoveFromCart = (productId) => {
-    setCartItem((prevItems) =>
-      prevItems.filter((item) => item.id !== productId)
-    );
+    setCartItem((e) => {
+      return e
+        .map((item) => {
+          if (item.id === productId) {
+            return { ...item, quantity: item.quantity - 1 }; // 1 0
+          }
+          return item;
+        })
+        .filter((item) => item.quantity > 0); // remove item with quantity 0
+    });
   };
 
   return (
@@ -61,6 +79,7 @@ function App() {
         padding: "20px",
       }}
     >
+      <NavBar cartItemCount={cartItemCount} />
       <h1 style={{ textAlign: "center" }}>Eccomerce</h1>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
         {products.map((product) => (
